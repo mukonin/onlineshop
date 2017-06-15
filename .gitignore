@@ -1,1 +1,5 @@
-.idea/*
+*.jar
+*.war
+*.ear
+*.iml
+.idea/
