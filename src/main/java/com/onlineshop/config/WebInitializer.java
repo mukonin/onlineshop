@@ -1,4 +1,4 @@
-package com.onlineshop.initializer;
+package com.onlineshop.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
