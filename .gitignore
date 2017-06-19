@@ -3,4 +3,4 @@ target/
 *.jar
 *.war
 *.ear
-*.imlorg.springframework.web.bind.annotation
+*.iml
