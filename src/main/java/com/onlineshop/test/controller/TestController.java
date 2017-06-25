@@ -12,4 +12,9 @@ public class TestController {
 	public String home() {
 		return "test";
 	}
+
+	@GetMapping(value = "/admin/**")
+	public String admin() {
+		return "testAdmin";
+	}
 }
