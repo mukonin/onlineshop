@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}">
+</head>
+<body>
+
+
+<div th:fragment="content" class="container">
+
+    <div class="col-md-4 col-md-offset-4">
+        <form name="f" th:action="@{/login}" method="post" class="form-signin">
+
+            <div class="form-group has-success" th:if="${param.logout}">
+                <span class="help-block">You have been logged out.</span>
+            </div>
+
+            <div class="form-group has-error" th:if="${param.error}">
+                <span class="help-block">Invalid username and / or password.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary pull-right">Log in</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
