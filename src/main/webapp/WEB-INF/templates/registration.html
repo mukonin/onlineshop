@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}">
+
+
+</head>
+<body>
+
+<div th:fragment="content" class="container">
+
+    <div class="col-md-4 col-md-offset-4">
+        <form th:action="@{/create_user}" th:object="${user}" method="post" enctype="utf8" class="form-signin">
+
+
+            <div class="form-group">
+                <label for="userName">Username</label>
+                <div class="alert alert-danger in-line" role="alert"  th:if="${#fields.hasErrors('userName')}">
+                    <p class="has-error" th:errors="*{userName}">Email Error</p>
+                </div>
+                <input id="userName"  class="form-control" placeholder="Username" th:field="*{userName}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="alert alert-danger in-line" role="alert"  th:if="${#fields.hasErrors('email')}">
+                    <p class="has-error" th:errors="*{email}">Email Error</p>
+                </div>
+                <input id="email"  class="form-control" placeholder="Email" th:field="*{email}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="alert alert-danger in-line" role="alert"  th:if="${#fields.hasErrors('password')}">
+                    <p class="has-error" th:errors="*{password}">Email Error</p>
+                </div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" th:field="*{password}"/>
+            </div>
+            <div class="form-group">
+                <label for="Cpassword">Confirm Password</label>
+                <div class="alert alert-danger in-line" role="alert"  th:if="${#fields.hasErrors('confirmPassword')}">
+                    <p class="has-error" th:errors="*{confirmPassword}">Email Error</p>
+                </div>
+                <input type="password" class="form-control" id="Cpassword" name="password" placeholder="Password" th:field="*{confirmPassword}"/>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary pull-right">Registration</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+
+
+
+
