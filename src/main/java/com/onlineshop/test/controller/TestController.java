@@ -1,12 +1,20 @@
 package com.onlineshop.test.controller;
 
+import com.onlineshop.dto.UserRegistrationDTO;
+import com.onlineshop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class TestController {
+
+	@Autowired
+	private UserService userService;
 
 	@GetMapping(value = "/")
 	public String home() {
@@ -23,4 +31,19 @@ public class TestController {
 		return "login";
 	}
 
+	@GetMapping(value = "/registr")
+	public String getRegistr(Model model) {
+		model.addAttribute("user", new UserRegistrationDTO());
+		return "registr";
+	}
+
+	@PostMapping(value = "/registr/submit")
+	public String registrUser(@Valid @ModelAttribute("user") UserRegistrationDTO user, BindingResult result, Model model) {
+		if(result.hasErrors()){
+			return "registr";
+		}
+		userService.registrUser(user);
+		model.addAttribute("success", true);
+		return "/user/endRegistration";
+	}
 }

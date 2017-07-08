@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/style.css}">
+</head>
+<body>
+<div th:fragment="content" class="container">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-primary panel-signin">
+            <div class="panel-heading">Registration</div>
+            <div class="panel-body">
+                <form th:action="@{/registr/submit}" method="post" th:object="${user}">
+                    <div th:class="${#fields.hasErrors('username')}? 'has-error' : 'form-group'">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" class="form-control" th:field="*{username}"/>
+                        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="help-block"></span>
+                    </div>
+
+                    <div th:class="${#fields.hasErrors('email')}? 'has-error' : 'form-group'">
+                        <label for="email">E-mail</label>
+                        <input type="text" id="email" class="form-control" th:field="*{email}"/>
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help-block"></span>
+                    </div>
+
+                    <div th:class="${#fields.hasErrors('password')}? 'has-error' : 'form-group'">
+                        <label th:for="password">Password</label>
+                        <input type="password" class="form-control" th:field="*{password}"/>
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="help-block"></span>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
