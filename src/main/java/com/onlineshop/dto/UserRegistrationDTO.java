@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @ToString
 public class UserRegistrationDTO {
-	@Size(min=6, max=20)
+	@Size(min = 6, max = 20)
 	private String password;
 
 	@NotEmpty
@@ -29,7 +29,7 @@ public class UserRegistrationDTO {
 	@UniqueEmail
 	private String email;
 
-	@Size(min=3, max=32)
+	@Size(min = 3, max = 32)
 	@UniqueUsername
 	private String username;
 }

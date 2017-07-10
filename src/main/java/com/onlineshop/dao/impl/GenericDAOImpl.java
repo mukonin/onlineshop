@@ -12,17 +12,17 @@ import java.lang.reflect.Type;
 /**
  * Created by sanya on 04.07.2017.
  */
-abstract public class GenericDAOImpl<T, PK extends Serializable>  implements GenericDAO<T, PK>{
+abstract public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T, PK> {
 	public Class<T> type;
 
 	private SessionFactory sessionFactory;
 
 	@Autowired
-	public void setSessionFactory(SessionFactory sessionFactory){
-		this.sessionFactory=sessionFactory;
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
-	protected Session getSession(){
+	protected Session getSession() {
 		return this.sessionFactory.getCurrentSession();
 	}
 
@@ -50,6 +50,6 @@ abstract public class GenericDAOImpl<T, PK extends Serializable>  implements Gen
 
 	@Override
 	public T getById(PK id) {
-		return  getSession().get(type, id);
+		return getSession().get(type, id);
 	}
 }

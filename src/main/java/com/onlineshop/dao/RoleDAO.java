@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
  * Created by sanya on 04.07.2017.
  */
 @Component
-public interface RoleDAO extends GenericDAO<Role, Long>{
+public interface RoleDAO extends GenericDAO<Role, Long> {
 	Role getRoleByName(String name);
 }

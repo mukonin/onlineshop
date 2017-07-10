@@ -21,7 +21,7 @@
 
                     <div th:class="${#fields.hasErrors('email')}? 'has-error' : 'form-group'">
                         <label for="email">E-mail</label>
-                        <input type="text" id="email" class="form-control" th:field="*{email}"/>
+                        <input type="email" id="email" class="form-control" th:field="*{email}"/>
                         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help-block"></span>
                     </div>
 

@@ -15,7 +15,7 @@ public class MyUserDetails extends User implements UserDetails {
 	}
 
 	public MyUserDetails(User user) {
-		super(user.getId(), user.getEmail(), user.getUsername(), user.getPassword(), user.getRoles());
+		super(user.getId(), user.getEmail(), user.getUsername(), user.getPassword(), user.getRoles(), user.getStatus());
 	}
 
 	@Override
@@ -40,6 +40,6 @@ public class MyUserDetails extends User implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return this.getStatus().equals(UserStatus.ACTIVE);
 	}
 }

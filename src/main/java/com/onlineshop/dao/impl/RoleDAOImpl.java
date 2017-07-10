@@ -14,12 +14,11 @@ public class RoleDAOImpl extends GenericDAOImpl<Role, Long> implements RoleDAO {
 
 	@Override
 	public Role getRoleByName(String name) {
-		try{
+		try {
 			logger.info("getRoleByName name: " + name);
 			Query<Role> query = getSession().createQuery("from Role r where r.name=:name");
 			return query.setParameter("name", name).getSingleResult();
-		}
-		catch(Exception ex){
+		} catch (Exception ex) {
 			logger.error("Error get role by name: " + name + ex);
 			throw ex;
 		}

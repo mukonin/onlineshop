@@ -26,7 +26,7 @@ public class WebInitializer implements WebApplicationInitializer {
 		dispatcher.addMapping(MAPPING_URL);
 	}
 
-	private AnnotationConfigWebApplicationContext getContext(){
+	private AnnotationConfigWebApplicationContext getContext() {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 		context.setConfigLocation(CONFIG_LOCATION);
 		return context;

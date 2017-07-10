@@ -10,8 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserService {
 	void save(User user);
+
 	User getById(Long id);
+
 	void registrUser(UserRegistrationDTO userDTO);
+
 	User getByUserame(String nickname);
+
 	User getByEmail(String email);
 }

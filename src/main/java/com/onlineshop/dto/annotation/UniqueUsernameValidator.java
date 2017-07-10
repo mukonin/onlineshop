@@ -10,7 +10,7 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * Created by sanya on 07.07.2017.
  */
-public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String > {
+public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 
 	@Autowired
 	private UserDAO userDAO;

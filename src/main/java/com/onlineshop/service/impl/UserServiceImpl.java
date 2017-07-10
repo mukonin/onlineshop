@@ -3,6 +3,7 @@ package com.onlineshop.service.impl;
 import com.onlineshop.dao.UserDAO;
 import com.onlineshop.dto.UserRegistrationDTO;
 import com.onlineshop.model.User;
+import com.onlineshop.model.UserStatus;
 import com.onlineshop.service.RoleService;
 import com.onlineshop.service.UserService;
 import org.apache.log4j.LogManager;
@@ -57,6 +58,7 @@ public class UserServiceImpl implements UserService {
 			User user = new User();
 			user.getRoles().add(roleService.getRoleByName("ROLE_USER"));
 			user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+			user.setStatus(UserStatus.ACTIVE);
 			user.setEmail(userDTO.getEmail());
 			user.setUsername(userDTO.getUsername());
 			save(user);

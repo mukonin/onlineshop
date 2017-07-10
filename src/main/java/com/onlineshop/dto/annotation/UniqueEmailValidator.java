@@ -10,7 +10,7 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * Created by sanya on 07.07.2017.
  */
-public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String > {
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 
 	@Autowired
 	private UserDAO userDAO;

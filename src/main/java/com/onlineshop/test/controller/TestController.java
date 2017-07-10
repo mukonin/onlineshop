@@ -26,8 +26,8 @@ public class TestController {
 		return "testAdmin";
 	}
 
-	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String login(){
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login() {
 		return "login";
 	}
 
@@ -39,7 +39,7 @@ public class TestController {
 
 	@PostMapping(value = "/registr/submit")
 	public String registrUser(@Valid @ModelAttribute("user") UserRegistrationDTO user, BindingResult result, Model model) {
-		if(result.hasErrors()){
+		if (result.hasErrors()) {
 			return "registr";
 		}
 		userService.registrUser(user);

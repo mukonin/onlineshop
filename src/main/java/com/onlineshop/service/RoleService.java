@@ -9,5 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface RoleService {
 	void save(Role role);
+
 	Role getRoleByName(String name);
 }

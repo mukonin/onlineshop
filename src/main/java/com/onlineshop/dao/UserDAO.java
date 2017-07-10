@@ -9,7 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserDAO extends GenericDAO<User, Long> {
 	User getByUsername(String username);
+
 	User getByEmail(String email);
+
 	Boolean emailExists(String email);
+
 	Boolean usernameExists(String username);
 }
