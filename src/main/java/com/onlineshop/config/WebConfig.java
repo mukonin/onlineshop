@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -48,6 +50,16 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	private static final String PROP_HIBERNATE_DIALECT = "hibernate.dialect";
 	private static final String PROP_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 
+	private static final String PROP_MAIL_HOST = "mail.host";
+	private static final String PROP_MAIL_PORT = "mail.port";
+	private static final String PROP_MAIL_USERNAME = "mail.username";
+	private static final String PROP_MAIL_PASSWORD = "mail.password";
+
+	private static final String PROP_MAIL_SMTP_STARTTLS_ENABLE = "mail.smtp.starttls.enable";
+	private static final String PROP_MAIL_SMTP_AUTH = "mail.smtp.auth";
+	private static final String PROP_MAIL_TRANSPORT_PROTOCOL = "mail.transport.protocol";
+	private static final String PROP_MAIL_DEDUG = "mail.debug";
+
 	@Resource
 	private Environment environment;
 
@@ -63,6 +75,28 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
+
+
+	@Bean
+	public JavaMailSender getMailSender(){
+		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+		mailSender.setHost(environment.getRequiredProperty(PROP_MAIL_HOST));
+		mailSender.setPort(Integer.parseInt(environment.getRequiredProperty(PROP_MAIL_PORT)));
+		mailSender.setUsername(environment.getRequiredProperty(PROP_MAIL_USERNAME));
+		mailSender.setPassword(environment.getRequiredProperty(PROP_MAIL_PASSWORD));
+		mailSender.setJavaMailProperties(getMailProperties());
+		return mailSender;
+	}
+
+	public Properties getMailProperties(){
+		Properties properties = new Properties();
+		properties.put(PROP_MAIL_SMTP_STARTTLS_ENABLE, environment.getRequiredProperty(PROP_MAIL_SMTP_STARTTLS_ENABLE));
+		properties.put(PROP_MAIL_SMTP_AUTH, environment.getRequiredProperty(PROP_MAIL_SMTP_AUTH));
+		properties.put(PROP_MAIL_TRANSPORT_PROTOCOL, environment.getRequiredProperty(PROP_MAIL_TRANSPORT_PROTOCOL));
+		properties.put(PROP_MAIL_DEDUG,  environment.getRequiredProperty(PROP_MAIL_DEDUG));
+		return properties;
+	}
+
 
 	public Properties getHibernateProperties() {
 		Properties properties = new Properties();
