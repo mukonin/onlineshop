@@ -9,125 +9,145 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <properties>
+        <spring.core>4.3.8.RELEASE</spring.core>
+        <spring.orm>4.3.9.RELEASE</spring.orm>
+        <thymeleaf.spring4>3.0.5.RELEASE</thymeleaf.spring4>
+        <javax.servlet.api>3.0.1</javax.servlet.api>
+        <spring.security>4.2.3.RELEASE</spring.security>
+        <lombok>1.16.16</lombok>
+        <hibernate.core>5.2.10.Final</hibernate.core>
+        <hibernate.validator>5.3.5.Final</hibernate.validator>
+        <postgresql>42.1.1</postgresql>
+        <hibernate.validator.cdi>5.2.4.Final</hibernate.validator.cdi>
+        <log4j>1.2.17</log4j>
+        <javax.el.api>2.2.5</javax.el.api>
+        <javax.el>2.2.6</javax.el>
+        <spring.context.support>4.3.9.RELEASE</spring.context.support>
+        <javax.mail.api>1.5.5</javax.mail.api>
+        <mail>1.4.7</mail>
+        <modelmapper>1.1.0</modelmapper>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.core}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.core}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.core}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.core}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.core}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.3.9.RELEASE</version>
+            <version>${spring.orm}</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring4</artifactId>
-            <version>3.0.5.RELEASE</version>
+            <version>${thymeleaf.spring4}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet.api}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <version>${spring.security}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <version>${spring.security}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
+            <version>${lombok}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.10.Final</version>
+            <version>${hibernate.core}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.10.Final</version>
+            <version>${hibernate.core}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.3.5.Final</version>
+            <version>${hibernate.validator}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.1.1</version>
+            <version>${postgresql}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator-cdi</artifactId>
-            <version>5.2.4.Final</version>
+            <version>${hibernate.validator.cdi}</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j}</version>
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
-            <version>2.2.5</version>
+            <version>${javax.el.api}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
-            <version>2.2.6</version>
+            <version>${javax.el}</version>
         </dependency>
         <!-- Spring Mail-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>4.3.9.RELEASE</version>
+            <version>${spring.context.support}</version>
         </dependency>
 
         <!--Java Mail-->
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>javax.mail-api</artifactId>
-            <version>1.5.5</version>
+            <version>${javax.mail.api}</version>
         </dependency>
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
-            <version>1.4.7</version>
+            <version>${mail}</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>1.1.0</version>
+            <version>${modelmapper}</version>
         </dependency>
     </dependencies>
 
