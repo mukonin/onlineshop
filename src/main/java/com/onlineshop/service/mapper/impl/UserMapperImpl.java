@@ -16,21 +16,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserMapperImpl implements UserMapper {
 
-	@Autowired
+	private static Logger logger = LogManager.getLogger(UserMapperImpl.class);
 	ModelMapper modelMapper;
 
-	private static Logger logger = LogManager.getLogger(UserMapperImpl.class);
-
-	@Override
-	public UserRegistrationDTO convertToDto(User user) {
-		logger.info("Entity User with user name: " + user.getUsername() + " convert to UserDto");
-		UserRegistrationDTO userRegistrationDTO = modelMapper.map(user, UserRegistrationDTO.class);
-		return userRegistrationDTO;
-	}
-
-	@Override
-	public User convertToEntity(UserRegistrationDTO userRegistrationDTO) {
-		logger.info("UserDto with user name:" + userRegistrationDTO.getUsername() + "converted to Entity User");
+	@Autowired
+	public UserMapperImpl(ModelMapper modelMapper){
+		this.modelMapper = modelMapper;
 		PropertyMap<UserRegistrationDTO, User> UserRegistrationDTOMap = new PropertyMap<UserRegistrationDTO, User>() {
 			protected void configure() {
 				map().setUsername(source.getUsername());
@@ -42,6 +33,18 @@ public class UserMapperImpl implements UserMapper {
 			}
 		};
 		modelMapper.addMappings(UserRegistrationDTOMap);
+	}
+
+	@Override
+	public UserRegistrationDTO convertToDto(User user) {
+		logger.info("Entity User with user name: " + user.getUsername() + " convert to UserDto");
+		UserRegistrationDTO userRegistrationDTO = modelMapper.map(user, UserRegistrationDTO.class);
+		return userRegistrationDTO;
+	}
+
+	@Override
+	public User convertToEntity(UserRegistrationDTO userRegistrationDTO) {
+		logger.info("UserDto with user name:" + userRegistrationDTO.getUsername() + "converted to Entity User");
 		User user = modelMapper.map(userRegistrationDTO, User.class);
 		return user;
 	}
