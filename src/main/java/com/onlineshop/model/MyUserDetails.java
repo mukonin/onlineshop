@@ -19,6 +19,11 @@ public class MyUserDetails extends User implements UserDetails {
 	}
 
 	@Override
+	public String getUsername(){
+		return super.getEmail();
+	}
+
+	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return super.getRoles();
 	}
