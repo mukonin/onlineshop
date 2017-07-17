@@ -2,16 +2,21 @@ package com.onlineshop.service.impl;
 
 import com.onlineshop.dao.UserDAO;
 import com.onlineshop.dto.UserRegistrationDTO;
+import com.onlineshop.model.Role;
 import com.onlineshop.model.User;
 import com.onlineshop.model.UserStatus;
 import com.onlineshop.service.MailService;
 import com.onlineshop.service.RoleService;
 import com.onlineshop.service.UserService;
+import com.onlineshop.service.mapper.UserMapper;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by sanya on 04.07.2017.
@@ -32,6 +37,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private RoleService roleService;
+
+	@Autowired
+	UserMapper userMapper;
 
 	@Override
 	public void save(User user) {
@@ -59,12 +67,13 @@ public class UserServiceImpl implements UserService {
 	public void registrUser(UserRegistrationDTO userDTO) {
 		try {
 			logger.info("regist new user: " + userDTO);
-			User user = new User();
-			user.getRoles().add(roleService.getRoleByName("ROLE_USER"));
-			user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+			Set<Role> roleSet = new HashSet<>();
+			roleSet.add(roleService.getRoleByName("ROLE_USER"));
+
+			User user = userMapper.convertToEntity(userDTO);
+			user.setRoles(roleSet);
 			user.setStatus(UserStatus.ACTIVE);
-			user.setEmail(userDTO.getEmail());
-			user.setUsername(userDTO.getUsername());
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			save(user);
 			mailService.sendMail(user);
 		} catch (Exception ex) {
