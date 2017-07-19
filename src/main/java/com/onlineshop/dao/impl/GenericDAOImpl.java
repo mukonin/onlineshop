@@ -9,9 +9,7 @@ import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-/**
- * Created by sanya on 04.07.2017.
- */
+
 abstract public class GenericDAOImpl<T, PK extends Serializable> implements GenericDAO<T, PK> {
 	public Class<T> type;
 
